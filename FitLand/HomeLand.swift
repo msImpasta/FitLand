@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeLand: View {
     var body: some View {
-        VStack (alignment: .leading, spacing: 100){
+        VStack {
             .background(Color.green)
         }
             //.padding()
