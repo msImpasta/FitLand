@@ -17,14 +17,9 @@ struct TitleScreen: View {
                 .font(.system(size: 55, weight: .bold, design: .default))
                 .foregroundColor(Color(hue: 0.923, saturation: 0.543, brightness: 0.938))
                 .edgesIgnoringSafeArea(.all).ignoresSafeArea()
-                
         }
-        
-        
-
     }
 }
-
 #Preview {
     TitleScreen()
 }
