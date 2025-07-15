@@ -9,16 +9,20 @@ struct TitleScreen: View {
                 .font(.system(size: 30, weight: .bold, design: .default))
                 .foregroundColor(.white)
                 .padding()
+            
+            HStack {
+                Image(systemName: "play.square.fill")
+                    .edgesIgnoringSafeArea(.all).ignoresSafeArea()
+                
+                    .padding()
+            }
+            
+            
+            
         }
-        HStack {
-            Image(systemName: "play.square.fill")
-                .edgesIgnoringSafeArea(.all).ignoresSafeArea()
-                .padding()
-        }
-        
-        
-
     }
+    
+    
 }
 
 #Preview {
