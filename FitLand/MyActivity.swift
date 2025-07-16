@@ -9,7 +9,10 @@ import SwiftUI
 
 struct MyActivity: View {
     var body: some View {
-        Text("Activity")
+        Image("FitLandActivity")
+            .ignoresSafeArea(edges: .all)
+            //.resizable()
+            .scaledToFit()
     }
 }
 
