@@ -1,22 +1,31 @@
 import SwiftUI
 
 struct TitleScreen: View {
+    @State private var startApp = false
+
     var body: some View {
-        ZStack{
-            
-            Color(red: 0.555, green: 0.7727, blue: 0.889)
-                .edgesIgnoringSafeArea(.all)
-            Text("Welcome to FitLand!")
-                .font(.system(size: 30, weight: .bold, design: .default))
-                .foregroundColor(Color(hue: 0.923, saturation: 0.543, brightness: 0.938))
+        if startApp {
+            ContentView()
+        } else {
+            VStack(spacing: 40) {
+                Text("Welcome to FitLand")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+
+                Button("Start") {
+                    withAnimation {
+                        startApp = true
+                    }
+                }
+                .font(.title2)
                 .padding()
-        }
-        HStack {
-            Image(systemName: "play.square.fill")
-            
-                .font(.system(size: 55, weight: .bold, design: .default))
-                .foregroundColor(Color(hue: 0.923, saturation: 0.543, brightness: 0.938))
-                .edgesIgnoringSafeArea(.all).ignoresSafeArea()
+                .background(Color.pink) 
+                .foregroundColor(.white)
+                .cornerRadius(12)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.gray.opacity(0.9))
+            .foregroundColor(.white)
         }
     }
 }
