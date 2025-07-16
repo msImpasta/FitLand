@@ -12,12 +12,10 @@ struct HomeLand: View {
         VStack (alignment: .leading, spacing: 100){
             Image("FitLandHome")
                 .resizable()
+                
             
         }
-            //.padding()
-            //.background(Color.green)
-            //.padding()
-        }
+                }
     }
 
 #Preview {
