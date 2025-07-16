@@ -12,7 +12,8 @@ struct HomeLand: View {
         VStack (alignment: .leading, spacing: 100){
             Image("FitLandHome")
                 .resizable()
-                
+                .ignoresSafeArea(edges: .all)
+                .scaledToFill()
             
         }
                 }
