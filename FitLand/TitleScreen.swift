@@ -16,6 +16,7 @@ struct TitleScreen: View {
                 Button("Start") {
                     withAnimation {
                         startApp = true
+                        Image("Title")
                     }
                 }
                 .font(.title2)

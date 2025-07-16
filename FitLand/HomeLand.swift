@@ -10,6 +10,9 @@ import SwiftUI
 struct HomeLand: View {
     var body: some View {
         VStack (alignment: .leading, spacing: 100){
+            Image("FitLandHome")
+                .resizable()
+            
         }
             //.padding()
             //.background(Color.green)
