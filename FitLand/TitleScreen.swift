@@ -1,35 +1,54 @@
 import SwiftUI
 
 struct TitleScreen: View {
-@State private var startApp = false
-
+    @State private var startApp = false
 
     var body: some View {
         if startApp {
             ContentView()
         } else {
-            VStack(spacing: 40) {
-                Text("Welcome to FitLand")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
+            ZStack {
+                Image("aura-bg")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
 
-                Button("Start") {
-                    withAnimation {
-                        startApp = true
+                VStack {
+                    Spacer()
+
+                    VStack(spacing: 30) {
+                        Image("Title")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height:300)
+
+                        Button("START PLAYING") {
+                            withAnimation {
+                                startApp = true
+                            }
+                        }
+                        .font(.title2)
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(Color(red: 0.99, green: 0.674, blue: 0.9))
+                        .cornerRadius(12)
                     }
+                    .foregroundColor(.white)
+
+                    Spacer()
+                    Image("AppIcon2")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 400)
+                        .padding(.bottom, 30)
                 }
-                .font(.title2)
-                .padding()
-                .background(Color.pink) 
-                .foregroundColor(.white)
-                .cornerRadius(12)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.gray.opacity(0.9))
-            .foregroundColor(.white)
         }
     }
 }
+
 #Preview {
     TitleScreen()
 }
+
