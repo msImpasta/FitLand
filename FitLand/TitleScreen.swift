@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct TitleScreen: View {
+<<<<<<< HEAD
     var body: some View {
         ZStack{
             Color(red: 0.200, green: 0.70, blue: 0.75)
@@ -20,10 +21,36 @@ struct TitleScreen: View {
         }
         
         
+=======
+    @State private var startApp = false
+>>>>>>> 32f212f86f6d0941a26d812849af27dd1612e245
 
+    var body: some View {
+        if startApp {
+            ContentView()
+        } else {
+            VStack(spacing: 40) {
+                Text("Welcome to FitLand")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+
+                Button("Start") {
+                    withAnimation {
+                        startApp = true
+                    }
+                }
+                .font(.title2)
+                .padding()
+                .background(Color.pink) 
+                .foregroundColor(.white)
+                .cornerRadius(12)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.gray.opacity(0.9))
+            .foregroundColor(.white)
+        }
     }
 }
-
 #Preview {
     TitleScreen()
 }
