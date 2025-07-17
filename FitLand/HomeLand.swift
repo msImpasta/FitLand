@@ -9,11 +9,16 @@ import SwiftUI
 
 struct HomeLand: View {
     var body: some View {
-        VStack (alignment: .leading, spacing: 100){
+        ZStack {
             Image("FitLandHome")
                 .resizable()
                 .ignoresSafeArea(edges: .all)
                 .scaledToFill()
+            Image("Character")
+                .resizable()
+                .scaledToFit()
+                //.aspectRatio(contentMode:(.fit))
+                .frame(width: 250, height: 250)
             
         }
                 }

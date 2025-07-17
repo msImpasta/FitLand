@@ -26,6 +26,10 @@ struct MyCloset: View {
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
+                Image("Character")
+                    .resizable()
+                    .scaledToFit()
+                    
 
                 VStack {
                     Text("⭐️ Points: \(points)")
