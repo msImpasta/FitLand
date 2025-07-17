@@ -8,6 +8,7 @@ struct ClosetItem: Identifiable {
 }
 
 struct MyCloset: View {
+    
     // Sample items
     let items = [
         ClosetItem(name: "Pink Hoodie", imageName: "tshirt", cost: 50),
