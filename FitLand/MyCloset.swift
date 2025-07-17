@@ -8,70 +8,76 @@ struct ClosetItem: Identifiable {
 }
 
 struct MyCloset: View {
-    
-    // Sample items
     let items = [
-        ClosetItem(name: "Pink Hoodie", imageName: "tshirt", cost: 50),
-        ClosetItem(name: "Sneakers", imageName: "shoeprints.fill", cost: 75),
-        ClosetItem(name: "Cool Hat", imageName: "sun.max.fill", cost: 30),
-        ClosetItem(name: "Jacket", imageName: "flame", cost: 60),
+        ClosetItem(name: "Shirt", imageName: "tshirt", cost: 50),
+        ClosetItem(name: "Heels", imageName: "shoeprints.fill", cost: 75),
         ClosetItem(name: "Shades", imageName: "eyeglasses", cost: 40),
-        ClosetItem(name: "Backpack", imageName: "bag.fill", cost: 90)
+        ClosetItem(name: "Purse", imageName: "bag.fill", cost: 90)
     ]
 
     @State private var points = 200
-
     var columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
 
     var body: some View {
         NavigationView {
-            VStack {
-                Text("⭐️ Points: \(points)")
-                    .font(.headline)
-                    .padding()
+            ZStack {
+              
+                Image("Closet")
+                    .resizable()
+                    .scaledToFill()
+                    .ignoresSafeArea()
 
-                ScrollView {
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(items) { item in
-                            VStack(spacing: 10) {
-                                Image(systemName: item.imageName)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 40)
+                VStack {
+                    Text("⭐️ Points: \(points)")
+                        .font(.headline)
+                        .padding()
+                        .foregroundColor(.white)
 
-                                Text(item.name)
-                                    .font(.subheadline)
+                    ScrollView {
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(items) { item in
+                                VStack(spacing: 10) {
+                                    Image(systemName: item.imageName)
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(height: 40)
 
-                                Text("\(item.cost) pts")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
+                                    Text(item.name)
+                                        .font(.subheadline)
 
-                                Button("Buy") {
-                                    if points >= item.cost {
-                                        points -= item.cost
+                                    Text("\(item.cost) pts")
+                                        .font(.caption)
+                                        .foregroundColor(.gray)
+
+                                    Button("Buy") {
+                                        if points >= item.cost {
+                                            points -= item.cost
+                                        }
                                     }
+                                    .font(.caption)
+                                    .padding(5)
+                                    .frame(maxWidth: .infinity)
+                                    .background(points >= item.cost ? Color.pink : Color.gray)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(6)
                                 }
-                                .font(.caption)
-                                .padding(5)
-                                .frame(maxWidth: .infinity)
-                                .background(points >= item.cost ? Color.pink : Color.gray)
-                                .foregroundColor(.white)
-                                .cornerRadius(6)
+                                .padding()
+                                .background(Color.white.opacity(0.9)) // Optional transparency
+                                .cornerRadius(12)
+                                .shadow(radius: 4)
                             }
-                            .padding()
-                            .background(Color.white)
-                            .cornerRadius(12)
-                            .shadow(radius: 4)
                         }
+                        .padding()
                     }
-                    .padding()
                 }
+                .padding()
             }
-            .navigationTitle("My Closet Shop")
-            .background(Color(.systemGroupedBackground))
+            .navigationTitle("Upgrade Your Closet")
         }
     }
 }
+
 #Preview {
     MyCloset()
 }
+
