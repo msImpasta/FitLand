@@ -12,17 +12,24 @@ struct ProfileImage: View {
 
 struct MyProfile: View {
     var body: some View {
-        VStack{
-            Button("Settings") {
-            
-            }
-            Image(systemName: "line.3.horizontal")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 35, height: 35)
-                .offset(x:160, y: -350)
-        }
         
+        VStack{
+            Button("UserName") {
+            }
+            ZStack {
+                Text("Hi my name is UserName, this is where I live.")
+                Image("FitLandHome")
+                                .resizable()
+                                .scaledToFit()
+                            Image(systemName: "line.3.horizontal")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 35, height: 35)
+                                .offset(x:160, y: -350)
+            }
+            
+        }
+
     }
 }
 
