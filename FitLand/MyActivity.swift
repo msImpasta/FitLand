@@ -9,10 +9,18 @@ import SwiftUI
 
 struct MyActivity: View {
     var body: some View {
-        Image("FitLandActivity")
-            .resizable()
-            .ignoresSafeArea(edges: .all)
-            .scaledToFill()
+        
+        VStack {
+            Image("FitLandActivity")
+                .resizable()
+                .ignoresSafeArea(edges: .all)
+                .scaledToFill()
+
+            Text("My Activity")
+                .font(.body)
+                .padding()
+        }
+        
     }
 }
 
