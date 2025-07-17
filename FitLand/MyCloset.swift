@@ -35,7 +35,7 @@ struct MyCloset: View {
                     Text("⭐️ Points: \(points)")
                         .font(.headline)
                         .padding()
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
 
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 20) {
