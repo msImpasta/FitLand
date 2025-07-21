@@ -17,7 +17,6 @@ struct HomeLand: View {
             Image("Character")
                 .resizable()
                 .scaledToFit()
-                //.aspectRatio(contentMode:(.fit))
                 .frame(width: 250, height: 250)
             
         }

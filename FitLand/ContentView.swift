@@ -26,7 +26,6 @@ struct ContentView: View {
                     Text("Profile")
                 }
         }
-        //end of tab view^^
         
     }
 }
