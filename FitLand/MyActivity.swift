@@ -22,9 +22,7 @@ struct MyActivity: View {
             Image("Character")
                 .resizable()
                 .scaledToFit()
-
         }
-
     }
 }
 
