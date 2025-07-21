@@ -9,10 +9,10 @@ struct ClosetItem: Identifiable {
 
 struct MyCloset: View {
     let items = [
-        ClosetItem(name: "Shirt", imageName: "tshirt", cost: 50),
-        ClosetItem(name: "Heels", imageName: "shoeprints.fill", cost: 75),
-        ClosetItem(name: "Shades", imageName: "eyeglasses", cost: 40),
-        ClosetItem(name: "Purse", imageName: "bag.fill", cost: 90)
+        ClosetItem(name: "Tops", imageName: "tshirt", cost: 55),
+        ClosetItem(name: "Shoes", imageName: "shoeprints.fill", cost: 70),
+        ClosetItem(name: "Accesories", imageName: "eyeglasses", cost: 30),
+        ClosetItem(name: "Purses", imageName: "bag.fill", cost: 80)
     ]
 
     @State private var points = 200
@@ -29,11 +29,11 @@ struct MyCloset: View {
                 Image("Character")
                     .resizable()
                     .scaledToFit()
-                    
+                    .position(x: 250, y: 490)
 
                 VStack {
                     Text("⭐️ Points: \(points)")
-                        .font(.headline)
+                        .font(.subheadline)
                         .padding()
                         .foregroundColor(.black)
 
@@ -61,7 +61,7 @@ struct MyCloset: View {
                                     .font(.caption)
                                     .padding(5)
                                     .frame(maxWidth: .infinity)
-                                    .background(points >= item.cost ? Color.pink : Color.gray)
+                                    .background(points >= item.cost ? Color.teal : Color.gray)
                                     .foregroundColor(.white)
                                     .cornerRadius(6)
                                 }
@@ -76,7 +76,8 @@ struct MyCloset: View {
                 }
                 .padding()
             }
-            .navigationTitle("Upgrade Your Closet")
+            .navigationTitle("My Closet")
+            .font(.largeTitle)
         }
     }
 }
