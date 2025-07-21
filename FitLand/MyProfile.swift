@@ -1,5 +1,4 @@
 import SwiftUI
-//this is for the user to insert their prof pic
 struct ProfileImage: View {
     var body: some View {
         Image("profile")

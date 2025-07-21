@@ -16,7 +16,7 @@ struct MyActivity: View {
                 .scaledToFill()
 
             VStack {
-                Spacer().frame(height: 180)
+                Spacer().frame(height: 20)
                 
                 VStack(spacing: 10) {
                     Text("⭐️ Points: \(points)")
@@ -36,17 +36,15 @@ struct MyActivity: View {
                 .cornerRadius(20)
                 .padding(.horizontal, 40)
 
-                Spacer().frame(height: 20)
+                Spacer().frame(height: 210)
 
-                // Character
                 Image("Character")
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 180)
+                    .frame(height: 260)
                     .padding(.bottom, -10)
                     .zIndex(1)
 
-                // Steps & workout log
                 VStack(spacing: 6) {
                     Text("Steps: \(steps)")
                         .font(.headline)
@@ -55,7 +53,6 @@ struct MyActivity: View {
                         Text("Workouts: \(workouts.count)")
                             .font(.headline)
 
-                        // List of workouts
                         ForEach(workouts, id: \.self) { workout in
                             Text("• \(workout)")
                                 .font(.subheadline)
@@ -70,7 +67,6 @@ struct MyActivity: View {
 
                 Spacer().frame(height: 20)
 
-                // Input fields
                 VStack(spacing: 12) {
                     HStack {
                         TextField("Enter steps", text: $inputSteps)
