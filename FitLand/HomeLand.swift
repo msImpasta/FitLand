@@ -10,7 +10,6 @@ struct HomeLand: View {
             Image("Character")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 250, height: 250)
             
         }
                 }
