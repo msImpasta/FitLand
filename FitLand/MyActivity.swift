@@ -27,6 +27,10 @@ struct MyActivity: View {
                         .bold()
                 }
                 .padding()
+            
+            Image("Character")
+                .resizable()
+                .scaledToFit()
                 .frame(maxWidth: .infinity)
                 .background((Color(red: 0.99, green: 0.674, blue: 0.9)))
                 .cornerRadius(20)
