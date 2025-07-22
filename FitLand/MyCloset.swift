@@ -32,10 +32,20 @@ struct MyCloset: View {
                     .position(x: 250, y: 490)
 
                 VStack {
-                    Text("⭐️ Points: \(points)")
-                        .font(.subheadline)
-                        .padding()
-                        .foregroundColor(.black)
+                    VStack(spacing: 10) {
+                        Text("⭐️ Points: \(points)")
+                            .font(.title2)
+                            .bold()
+                        Text("My Closet")
+                            .font(.largeTitle)
+                            .bold()
+                    }
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background((Color(red: 0.99, green: 0.674, blue: 0.9)))
+                    .cornerRadius(20)
+                    .padding(.horizontal, 40)
+
 
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 20) {
@@ -76,8 +86,7 @@ struct MyCloset: View {
                 }
                 .padding()
             }
-            .navigationTitle("My Closet")
-            .font(.largeTitle)
+          
         }
     }
 }
