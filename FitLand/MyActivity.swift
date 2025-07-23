@@ -7,6 +7,16 @@ struct MyActivity: View {
     
     @State private var inputSteps = ""
     @State private var inputWorkout = ""
+    
+    let milestones = [50, 150, 200, 250, 300]
+
+    var nextMilestone: Int? {
+        return milestones.first(where: { points < $0 })
+    }
+
+    var achievedMilestones: [Int] {
+        return milestones.filter { points >= $0 }
+    }
 
     var body: some View {
         ZStack {
@@ -19,20 +29,43 @@ struct MyActivity: View {
                 Spacer().frame(height: 20)
                 
                 VStack(spacing: 10) {
-                    Text("⭐️ Points: \(points)")
-                        .font(.title2)
-                        .bold()
-                    Text("My Activity")
+                    Text("FitLand Stats")
                         .font(.largeTitle)
                         .bold()
+
+                    Text("Points: \(points)")
+                        .font(.title2)
+                        .bold()
+
+                    Text("Total Steps: \(steps)")
+                        .font(.headline)
+
+                    if let next = nextMilestone {
+                        Text("Next Reward at \(next) points")
+                            .font(.subheadline)
+                    } else {
+                        Text("All rewards unlocked!")
+                            .font(.subheadline)
+                    }
+
+                    if !achievedMilestones.isEmpty {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text("Unlocked Rewards:")
+                                .font(.headline)
+                            ForEach(achievedMilestones, id: \.self) { milestone in
+                                Text("\(milestone) Points Achieved")
+                            }
+                        }
+                        .padding(.top, 5)
+                    }
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background((Color(red: 0.99, green: 0.674, blue: 0.9)))
+                .background(Color(red: 0.99, green: 0.674, blue: 0.9))
                 .cornerRadius(20)
                 .padding(.horizontal, 40)
 
-                Spacer().frame(height: 210)
+                Spacer().frame(height: 180)
 
                 Image("Character")
                     .resizable()
@@ -42,9 +75,6 @@ struct MyActivity: View {
                     .zIndex(1)
 
                 VStack(spacing: 6) {
-                    Text("Steps: \(steps)")
-                        .font(.headline)
-
                     if !workouts.isEmpty {
                         Text("Workouts: \(workouts.count)")
                             .font(.headline)
@@ -57,7 +87,7 @@ struct MyActivity: View {
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background((Color(red: 0.99, green: 0.674, blue: 0.9)))
+                .background(Color(red: 0.99, green: 0.674, blue: 0.9))
                 .cornerRadius(20)
                 .padding(.horizontal, 60)
 
@@ -77,7 +107,7 @@ struct MyActivity: View {
                             }
                         }
                         .padding(.horizontal)
-                        .background((Color(red: 0.99, green: 0.674, blue: 0.9)))
+                        .background(Color(red: 0.99, green: 0.674, blue: 0.9))
                         .foregroundColor(.white)
                         .cornerRadius(10)
                     }
@@ -95,7 +125,7 @@ struct MyActivity: View {
                             }
                         }
                         .padding(.horizontal)
-                        .background((Color(red: 0.99, green: 0.674, blue: 0.9)))
+                        .background(Color(red: 0.99, green: 0.674, blue: 0.9))
                         .foregroundColor(.white)
                         .cornerRadius(10)
                     }
@@ -112,5 +142,4 @@ struct MyActivity: View {
 #Preview {
     MyActivity()
 }
-
 

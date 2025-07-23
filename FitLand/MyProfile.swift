@@ -2,11 +2,10 @@ import SwiftUI
 
 struct ProfileImage: View {
     var body: some View {
-    
         
     }
+    
 }
-
 struct MyProfile: View {
     @State private var name = ""
     @State private var email = ""

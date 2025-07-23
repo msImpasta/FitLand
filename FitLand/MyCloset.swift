@@ -9,10 +9,10 @@ struct ClosetItem: Identifiable {
 
 struct MyCloset: View {
     let items = [
-        ClosetItem(name: "Tops", imageName: "tshirt", cost: 55),
-        ClosetItem(name: "Shoes", imageName: "shoeprints.fill", cost: 70),
-        ClosetItem(name: "Accesories", imageName: "eyeglasses", cost: 30),
-        ClosetItem(name: "Purses", imageName: "bag.fill", cost: 80)
+        ClosetItem(name: "Character Upgrade 1", imageName: "tshirt", cost: 100),
+        ClosetItem(name: "Character Upgrade 2", imageName: "shoeprints.fill", cost: 150),
+        ClosetItem(name: "Character Upgrade 3", imageName: "eyeglasses", cost: 200),
+        
 
     ]
 
@@ -33,10 +33,10 @@ struct MyCloset: View {
                     .position(x: 300, y: 500)
                 VStack {
                     VStack(spacing: 10) {
-                        Text("⭐️ Points: \(points)")
+                        Text("Points: \(points)")
                             .font(.title2)
                             .bold()
-                        Text("My Closet")
+                        Text("My Character")
                             .font(.largeTitle)
                             .bold()
                     }
