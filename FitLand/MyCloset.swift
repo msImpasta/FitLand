@@ -9,29 +9,27 @@ struct ClosetItem: Identifiable {
 
 struct MyCloset: View {
     let items = [
-        ClosetItem(name: "Character Upgrade 1", imageName: "tshirt", cost: 100),
-        ClosetItem(name: "Character Upgrade 2", imageName: "shoeprints.fill", cost: 150),
-        ClosetItem(name: "Character Upgrade 3", imageName: "eyeglasses", cost: 200),
-        
-
+        ClosetItem(name: "Character Upgrade 1", imageName: "peasant", cost: 0),
+        ClosetItem(name: "Character Upgrade 2", imageName: "Character", cost: 150),
+        ClosetItem(name: "Character Upgrade 3", imageName: "guy", cost: 200),
     ]
 
     @State private var points = 200
+    @State private var ownedItems: Set<UUID> = []
+    @State private var selectedImageName: String = "peasant"
+
     var columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
 
     var body: some View {
         NavigationView {
             ZStack {
-              
                 Image("Closet")
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
-                Image("Character")
-                    .resizable()
-                    .scaledToFit()
-                    .position(x: 210, y: 500)
+
                 VStack {
+                    // Top Bar
                     VStack(spacing: 10) {
                         Text("Points: \(points)")
                             .font(.title2)
@@ -42,19 +40,19 @@ struct MyCloset: View {
                     }
                     .padding()
                     .frame(maxWidth: .infinity)
-                    .background((Color(red: 0.99, green: 0.674, blue: 0.9)))
+                    .background(Color(red: 0.99, green: 0.674, blue: 0.9))
                     .cornerRadius(20)
                     .padding(.horizontal, 40)
 
-
+                    // Scrollable Closet Items
                     ScrollView {
                         LazyVGrid(columns: columns, spacing: 20) {
                             ForEach(items) { item in
                                 VStack(spacing: 10) {
-                                    Image(systemName: item.imageName)
+                                    Image(item.imageName)
                                         .resizable()
                                         .scaledToFit()
-                                        .frame(height: 40)
+                                        .frame(height: 60)
 
                                     Text(item.name)
                                         .font(.subheadline)
@@ -63,30 +61,56 @@ struct MyCloset: View {
                                         .font(.caption)
                                         .foregroundColor(.gray)
 
-                                    Button("Buy") {
-                                        if points >= item.cost {
-                                            points -= item.cost
+                                    if ownedItems.contains(item.id) || item.cost == 0 {
+                                        Button("Equip") {
+                                            selectedImageName = item.imageName
                                         }
+                                        .font(.caption)
+                                        .padding(5)
+                                        .frame(maxWidth: .infinity)
+                                        .background(Color.green)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(6)
+                                    } else {
+                                        Button("Buy") {
+                                            if points >= item.cost {
+                                                points -= item.cost
+                                                ownedItems.insert(item.id)
+                                                selectedImageName = item.imageName
+                                            }
+                                        }
+                                        .font(.caption)
+                                        .padding(5)
+                                        .frame(maxWidth: .infinity)
+                                        .background(points >= item.cost ? Color.teal : Color.gray)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(6)
+                                        .disabled(points < item.cost)
                                     }
-                                    .font(.caption)
-                                    .padding(5)
-                                    .frame(maxWidth: .infinity)
-                                    .background(points >= item.cost ? Color.teal : Color.gray)
-                                    .foregroundColor(.white)
-                                    .cornerRadius(6)
                                 }
                                 .padding()
-                                .background(Color.white.opacity(0.9)) // Optional transparency
+                                .background(Color.white.opacity(0.9))
                                 .cornerRadius(12)
                                 .shadow(radius: 4)
                             }
                         }
                         .padding()
                     }
+
+                    Spacer()
                 }
-                .padding()
+
+                // CHARACTER ON MAT (fixed to bottom center)
+                VStack {
+                    Spacer()
+                    Image(selectedImageName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 280)
+                        .shadow(radius: 10)
+                        .padding(.bottom, 15)
+                }
             }
-          
         }
     }
 }
