@@ -10,8 +10,8 @@ struct ClosetItem: Identifiable {
 struct MyCloset: View {
     let items = [
         ClosetItem(name: "Character Upgrade 1", imageName: "peasant", cost: 0),
-        ClosetItem(name: "Character Upgrade 2", imageName: "Character", cost: 150),
-        ClosetItem(name: "Character Upgrade 3", imageName: "guy", cost: 200),
+        ClosetItem(name: "Character Upgrade 2", imageName: "Character", cost: 20000),
+        ClosetItem(name: "Character Upgrade 3", imageName: "guy", cost: 40000),
     ]
 
     @State private var points = 200
@@ -109,6 +109,8 @@ struct MyCloset: View {
                         .frame(height: 280)
                         .shadow(radius: 10)
                         .padding(.bottom, 15)
+                        .position(x: 210, y: 500)
+
                 }
             }
         }
