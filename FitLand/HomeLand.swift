@@ -30,6 +30,7 @@ struct HomeLand: View {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 350)
+                    .position(x: 200, y: 270)
 
                 Spacer()
 
@@ -38,6 +39,7 @@ struct HomeLand: View {
                     .padding(10)
                     .background((Color(red: 0.99, green: 0.674, blue: 0.9)))
                     .cornerRadius(12)
+                    .position(x: 200, y: 220)
 
                 HStack(spacing: 15) {
                     ForEach(0..<3) { index in
@@ -49,6 +51,7 @@ struct HomeLand: View {
                             .background(selectedHouse == index ? .teal : .teal)
                             .foregroundColor(.black)
                             .cornerRadius(10)
+                            .position(x: 50, y: 70)
                         } else {
                             Button("Unlock House \(index + 1)\n(50 pts)") {
                                 if userPoints >= 50 {
@@ -61,6 +64,7 @@ struct HomeLand: View {
                             .foregroundColor(.black)
                             .cornerRadius(10)
                             .disabled(userPoints < 50)
+                            .position(x: 50, y: 70)
                         }
                     }
                 }
