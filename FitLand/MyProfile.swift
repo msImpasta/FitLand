@@ -2,13 +2,8 @@ import SwiftUI
 
 struct ProfileImage: View {
     var body: some View {
-        Image("person.crop.circle.fill")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 100, height: 100)
-            .clipShape(Circle())
-            .overlay(Circle().stroke(Color.white, lineWidth: 5))
-            .shadow(radius: 5)
+    
+        
     }
 }
 
@@ -26,19 +21,17 @@ struct MyProfile: View {
                 .scaledToFill()
 
             VStack(spacing: 20) {
-                HStack {
-                    Spacer()
-                    Image(systemName: "line.3.horizontal")
-                        .resizable()
-                        .frame(width: 30, height: 20)
-                        .padding()
-                }
+                Image(systemName: "person.crop.circle")
+                    .renderingMode(.template)
+                    .resizable()
+                    .scaledToFit()
+                    .foregroundColor(.white)
+                    .frame(width: 100, height: 100)
+                    .clipShape(Circle())
+                    .shadow(radius: 5)
 
-                Spacer()
 
-                ProfileImage()
-                    .padding(.top, 20)
-
+                
                 TextField("Name", text: $name)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
@@ -69,7 +62,6 @@ struct MyProfile: View {
                 }
                 .padding(.horizontal)
 
-                Spacer()
             }
         }
     }

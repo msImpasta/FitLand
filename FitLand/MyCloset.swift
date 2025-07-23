@@ -13,6 +13,7 @@ struct MyCloset: View {
         ClosetItem(name: "Shoes", imageName: "shoeprints.fill", cost: 70),
         ClosetItem(name: "Accesories", imageName: "eyeglasses", cost: 30),
         ClosetItem(name: "Purses", imageName: "bag.fill", cost: 80)
+
     ]
 
     @State private var points = 200
@@ -29,8 +30,7 @@ struct MyCloset: View {
                 Image("Character")
                     .resizable()
                     .scaledToFit()
-                    .position(x: 250, y: 490)
-
+                    .position(x: 300, y: 500)
                 VStack {
                     VStack(spacing: 10) {
                         Text("⭐️ Points: \(points)")
