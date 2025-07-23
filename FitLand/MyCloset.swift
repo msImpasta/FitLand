@@ -30,7 +30,7 @@ struct MyCloset: View {
                 Image("Character")
                     .resizable()
                     .scaledToFit()
-                    .position(x: 300, y: 500)
+                    .position(x: 210, y: 500)
                 VStack {
                     VStack(spacing: 10) {
                         Text("Points: \(points)")
