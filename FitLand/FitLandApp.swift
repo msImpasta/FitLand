@@ -4,7 +4,7 @@ import SwiftUI
 struct FitLandApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TitleScreen()
         }
     }
 }
