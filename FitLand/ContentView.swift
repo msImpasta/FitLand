@@ -1,35 +1,32 @@
 import SwiftUI
-
 struct ContentView: View {
+    @StateObject var pointsManager = PointsManager()
     var body: some View {
-       
-        TabView{
+        TabView {
             HomeLand()
-                .tabItem{
-                        Image(systemName:"house.fill")
-                        Text("My House")
+                .tabItem {
+                    Image(systemName: "house.fill")
+                    Text("My House")
                 }
             MyActivity()
-                .tabItem{
-                    Image(systemName:"dumbbell.fill")
+                .tabItem {
+                    Image(systemName: "dumbbell.fill")
                     Text("Activity")
                 }
             MyCloset()
-                .tabItem{
-                    Image(systemName:"door.french.closed")
+                .tabItem {
+                    Image(systemName: "door.french.closed")
                     Text("Closet")
                 }
-    
             MyProfile()
-                .tabItem{
-                    Image(systemName:"person.crop.circle")
+                .tabItem {
+                    Image(systemName: "person.crop.circle")
                     Text("Profile")
                 }
         }
-        
+        .environmentObject(pointsManager) 
     }
 }
-
 #Preview {
     ContentView()
 }

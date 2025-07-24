@@ -1,8 +1,6 @@
 import SwiftUI
-
 struct TitleScreen: View {
     @State private var startApp = false
-
     var body: some View {
         if startApp {
             ContentView()
@@ -12,10 +10,8 @@ struct TitleScreen: View {
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
-
                 VStack {
                     Spacer()
-
                     VStack(spacing: 30) {
                         Image("Title")
                             .resizable()
@@ -34,7 +30,6 @@ struct TitleScreen: View {
                         .cornerRadius(12)
                     }
                     .foregroundColor(.white)
-
                     Spacer()
                     Image("AppIcon2")
                         .resizable()
@@ -47,8 +42,6 @@ struct TitleScreen: View {
         }
     }
 }
-
 #Preview {
     TitleScreen()
 }
-
