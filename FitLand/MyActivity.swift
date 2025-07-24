@@ -52,12 +52,7 @@ struct MyActivity: View {
                 .cornerRadius(20)
                 .padding(.horizontal, 40)
                 .padding(.top, 30)
-                Image("Character")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 260)
-                    .padding(.bottom, -5)
-                    .zIndex(1)
+                
                 if !workouts.isEmpty {
                     VStack(spacing: 6) {
                         Text("Workouts: \(workouts.count)")
@@ -106,6 +101,15 @@ struct MyActivity: View {
                         .foregroundColor(.white)
                         .cornerRadius(10)
                     }
+                    Image("Mat")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 60)
+                            .padding(.bottom, -20)
+                        Image("Character")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 260)
                 }
                 .padding(.horizontal)
                 Spacer(minLength: 90)
