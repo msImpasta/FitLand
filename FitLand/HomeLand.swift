@@ -7,8 +7,8 @@ struct HouseItem: Identifiable {
 }
 struct HomeLand: View {
     let items = [
-        HouseItem(name: "Wood House", imageName: "wood", cost: 50000),
-        HouseItem(name: "Metal House", imageName: "metal", cost: 10000)
+        HouseItem(name: "Wood House", imageName: "wood", cost: 500),
+        HouseItem(name: "Metal House", imageName: "metal", cost: 1000)
     ]
     @EnvironmentObject var pointsManager: PointsManager
     @State private var ownedItems: Set<UUID> = []

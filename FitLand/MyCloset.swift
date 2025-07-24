@@ -8,8 +8,8 @@ struct ClosetItem: Identifiable {
 struct MyCloset: View {
     let items = [
         ClosetItem(name: "Character Upgrade 1", imageName: "peasant", cost: 0),
-        ClosetItem(name: "Character Upgrade 2", imageName: "Character", cost: 5000),
-        ClosetItem(name: "Character Upgrade 3", imageName: "guy", cost: 10000),
+        ClosetItem(name: "Character Upgrade 2", imageName: "Character", cost: 500),
+        ClosetItem(name: "Character Upgrade 3", imageName: "guy", cost: 1000),
     ]
     @EnvironmentObject var pointsManager: PointsManager
     @State private var ownedItems: Set<UUID> = []
