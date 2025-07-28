@@ -29,7 +29,7 @@ struct HomeLand: View {
                     .padding(.bottom, 0)
                     .zIndex(0)
                 VStack {
-                    Spacer().frame(height: 60)
+                    Spacer().frame(height: 80)
 
                     VStack(spacing: 10) {
                         Text("Points: \(pointsManager.points)")
@@ -43,9 +43,9 @@ struct HomeLand: View {
                     .frame(maxWidth: .infinity)
                     .background(Color(red: 0.99, green: 0.674, blue: 0.9))
                     .cornerRadius(20)
-                    .padding(.horizontal, 40)
+                    .padding(.horizontal, 50)
                     Spacer().frame(height: 350)
-                    ScrollView {
+                    
                         LazyVGrid(columns: columns, spacing: 20) {
                             ForEach(items) { item in
                                 VStack(spacing: 10) {
@@ -93,7 +93,7 @@ struct HomeLand: View {
                             }
                         }
                         .padding()
-                    }
+                    
                     Spacer()
                 }
                 .zIndex(1)

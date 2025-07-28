@@ -1,20 +1,25 @@
 import SwiftUI
+
 struct ClosetItem: Identifiable {
     let id = UUID()
     let name: String
     let imageName: String
     let cost: Int
 }
+
 struct MyCloset: View {
     let items = [
         ClosetItem(name: "Character Upgrade 1", imageName: "peasant", cost: 0),
         ClosetItem(name: "Character Upgrade 2", imageName: "Character", cost: 500),
         ClosetItem(name: "Character Upgrade 3", imageName: "guy", cost: 1000),
     ]
+    
     @EnvironmentObject var pointsManager: PointsManager
     @State private var ownedItems: Set<UUID> = []
     @State private var selectedImageName: String = "peasant"
+    
     var columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -22,21 +27,31 @@ struct MyCloset: View {
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
-                VStack {
-                    VStack(spacing: 10) {
-                        Text("Points: \(pointsManager.points)")
-                            .font(.title2)
-                            .bold()
-                        Text("My Character")
-                            .font(.largeTitle)
-                            .bold()
-                    }
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color(red: 0.99, green: 0.674, blue: 0.9))
-                    .cornerRadius(20)
-                    .padding(.horizontal, 40)
-                    ScrollView {
+                
+                ScrollView {
+                    VStack(spacing: 20) {
+                        VStack(spacing: 10) {
+                            Text("Points: \(pointsManager.points)")
+                                .font(.title2)
+                                .bold()
+                            Text("My Character")
+                                .font(.largeTitle)
+                                .bold()
+                        }
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color(red: 0.99, green: 0.674, blue: 0.9))
+                        .cornerRadius(20)
+                        .padding(.horizontal, 40)
+                        .padding(.top, 60)
+                        
+                        Image(selectedImageName)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(height: 280)
+                            .shadow(radius: 10)
+                            .padding(.bottom, -10)
+
                         LazyVGrid(columns: columns, spacing: 20) {
                             ForEach(items) { item in
                                 VStack(spacing: 10) {
@@ -44,11 +59,14 @@ struct MyCloset: View {
                                         .resizable()
                                         .scaledToFit()
                                         .frame(height: 60)
+                                    
                                     Text(item.name)
                                         .font(.subheadline)
+                                    
                                     Text("\(item.cost) pts")
                                         .font(.caption)
                                         .foregroundColor(.gray)
+                                    
                                     if ownedItems.contains(item.id) || item.cost == 0 {
                                         Button("Equip") {
                                             selectedImageName = item.imageName
@@ -82,24 +100,16 @@ struct MyCloset: View {
                                 .shadow(radius: 4)
                             }
                         }
-                        .padding()
+                        .padding(.horizontal)
+                        .padding(.bottom, 40)
                     }
-                    Spacer()
-                }
-                VStack {
-                    Spacer()
-                    Image(selectedImageName)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(height: 280)
-                        .shadow(radius: 10)
-                        .padding(.bottom, 15)
-                        .position(x: 210, y: 500)
                 }
             }
         }
     }
 }
+
 #Preview {
     MyCloset().environmentObject(PointsManager())
 }
+
