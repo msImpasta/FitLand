@@ -70,7 +70,7 @@ struct MyActivity: View {
                         }
                         .padding()
                         .frame(maxWidth: .infinity)
-                        .background(Color(red: 0.99, green: 0.674, blue: 0.9))
+                        .background(Color(red: 0.793, green: 0.674, blue: 0.9))
                         .cornerRadius(20)
                         .padding(.horizontal, 60)
                     }
@@ -88,7 +88,8 @@ struct MyActivity: View {
                                 }
                             }
                             .padding(.horizontal)
-                            .background(Color(red: 0.99, green: 0.674, blue: 0.9))
+                            .padding(.vertical, 5)
+                            .background(Color(red: 0.29, green: 0.64, blue: 0.967))
                             .foregroundColor(.black)
                             .cornerRadius(10)
                         }
@@ -105,7 +106,8 @@ struct MyActivity: View {
                                 }
                             }
                             .padding(.horizontal)
-                            .background(Color(red: 0.99, green: 0.674, blue: 0.9))
+                            .padding(.vertical, 5)
+                            .background(Color(red: 0.29, green: 0.64, blue: 0.967))
                             .foregroundColor(.black)
                             .cornerRadius(10)
                         }

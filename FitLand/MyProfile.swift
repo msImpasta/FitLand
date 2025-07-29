@@ -12,6 +12,8 @@ struct MyProfile: View {
     @State private var weight = "120 lbs"
     @State private var goal = "Be active"
     @State private var buttonColor = Color(red: 0.99, green: 0.674, blue: 0.9) // Start with pink
+    @State private var buttonText = "Save Profile"
+    @State private var isSaved = false
 
     var body: some View {
         ZStack {
@@ -48,11 +50,18 @@ struct MyProfile: View {
                 Button(action: {
                     withAnimation(.easeInOut(duration: 0.5)) {
                         buttonColor = .teal
+                        buttonText = "Saved!"
+                        isSaved = true
                     }
                     print("Saved: \(name), \(email), \(weight), \(goal)")
                 }) {
-                    Text("Save Profile")
-                        .foregroundColor(.white)
+                    HStack {
+                        if isSaved {
+                            Image(systemName: "checkmark")
+                        }
+                        Text(buttonText)
+                            
+                    }.foregroundColor(.white)
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(buttonColor)
